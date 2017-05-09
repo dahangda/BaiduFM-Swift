@@ -17,7 +17,7 @@ class Common {
     
     :returns: 可以播放的URL
     */
-    class func getCanPlaySongUrl(url: String)->String{
+    class func getCanPlaySongUrl(_ url: String)->String{
         
         if url.hasPrefix("http://file.qianqian.com"){
             return replaceString("&src=.+", replace: url, place: "")!
@@ -33,7 +33,7 @@ class Common {
     
     :returns: 首页显示的图片
     */
-    class func getIndexPageImage(info :SongInfo) -> String{
+    class func getIndexPageImage(_ info :SongInfo) -> String{
         
         if info.songPicBig.isEmpty == false {
             return info.songPicBig
@@ -53,13 +53,13 @@ class Common {
     
     :returns: 友好的时间显示
     */
-    class func getMinuteDisplay(seconds: Int) ->String{
+    class func getMinuteDisplay(_ seconds: Int) ->String{
         
-        var minute = Int(seconds/60)
-        var second = seconds%60
+        let minute = Int(seconds/60)
+        let second = seconds%60
         
-        var minuteStr = minute >= 10 ? String(minute) : "0\(minute)"
-        var secondStr = second >= 10 ? String(second) : "0\(second)"
+        let minuteStr = minute >= 10 ? String(minute) : "0\(minute)"
+        let secondStr = second >= 10 ? String(second) : "0\(second)"
         
         return "\(minuteStr):\(secondStr)"
     }
@@ -73,20 +73,20 @@ class Common {
     
     :returns: 替换后的字符串
     */
-    class func replaceString(pattern:String, replace:String, place:String)->String?{
-        var exp =  NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive, error: nil)
+    class func replaceString(_ pattern:String, replace:String, place:String)->String?{
+        var exp =  NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive, error: nil)
         return exp?.stringByReplacingMatchesInString(replace, options: nil, range: NSRange(location: 0,length: count(replace)), withTemplate: place)
     }
     
-    class func fileIsExist(filePath:String)->Bool{
-        return NSFileManager.defaultManager().fileExistsAtPath(filePath)
+    class func fileIsExist(_ filePath:String)->Bool{
+        return FileManager.default.fileExists(atPath: filePath)
     }
     
-    class func musicLocalPath(songId:String, format:String) -> String{
+    class func musicLocalPath(_ songId:String, format:String) -> String{
         
         var musicDir = Utils.documentPath().stringByAppendingPathComponent("download")
-        if !NSFileManager.defaultManager().fileExistsAtPath(musicDir){
-            NSFileManager.defaultManager().createDirectoryAtPath(musicDir, withIntermediateDirectories: false, attributes: nil, error: nil)
+        if !FileManager.default.fileExists(atPath: musicDir){
+            FileManager.default.createDirectoryAtPath(musicDir, withIntermediateDirectories: false, attributes: nil, error: nil)
         }
         var musicPath = musicDir.stringByAppendingPathComponent(songId + "." + format)
         return musicPath
@@ -96,18 +96,18 @@ class Common {
        
         //删除歌曲文件夹
         var musicDir = Utils.documentPath().stringByAppendingPathComponent("download")
-        NSFileManager.defaultManager().removeItemAtPath(musicDir, error: nil)
+        FileManager.default.removeItemAtPath(musicDir, error: nil)
         
     }
     
-    class func deleteSong(songId:String, format:String)->Bool{
+    class func deleteSong(_ songId:String, format:String)->Bool{
         //删除本地歌曲
         var musicPath = self.musicLocalPath(songId, format: format)
-        var ret = NSFileManager.defaultManager().removeItemAtPath(musicPath, error: nil)
+        var ret = FileManager.default.removeItemAtPath(musicPath, error: nil)
         return ret
     }
     
-    class func matchesForRegexInText(regex: String!, text: String!) -> [String] {
+    class func matchesForRegexInText(_ regex: String!, text: String!) -> [String] {
         
         let regex = NSRegularExpression(pattern: regex,
             options: nil, error: nil)!
@@ -119,29 +119,29 @@ class Common {
     }
     
     //02:57 => 2*60+57=177
-    class func timeStringToSecond(time:String)->Int?{
+    class func timeStringToSecond(_ time:String)->Int?{
         
-        var strArr = time.componentsSeparatedByString(":")
+        var strArr = time.components(separatedBy: ":")
         if strArr.count == 0 {return nil}
         
         var minute =  strArr[0].toInt()
         var second = strArr[1].toInt()
         
-        if let min = minute, sec = second{
+        if let min = minute, let sec = second{
             return min * 60 + sec
         }
         return nil
     }
     
-    class func subStr(str:String, start:Int, length:Int)->String{
+    class func subStr(_ str:String, start:Int, length:Int)->String{
         
-        return str.substringWithRange(Range<String.Index>(start: advance(str.startIndex, start), end: advance(str.startIndex, start+length)))
+        return str.substring(with: (advance(str.startIndex, start) ..< advance(str.startIndex, start+length)))
         
     }
     
-    class func praseSongLrc(lrc:String)->[(lrc:String,time:Int)]{
+    class func praseSongLrc(_ lrc:String)->[(lrc:String,time:Int)]{
         
-        var list = lrc.componentsSeparatedByString("\n")
+        var list = lrc.components(separatedBy: "\n")
         var ret:[(lrc:String,time:Int)] = []
         
         for row in list {
@@ -171,7 +171,7 @@ class Common {
         return ret
     }
     
-    class func currentLrcByTime(curLength:Int, lrcArray:[(lrc:String,time:Int)])->(String,String){
+    class func currentLrcByTime(_ curLength:Int, lrcArray:[(lrc:String,time:Int)])->(String,String){
         
         var i = 0
         for (lrc:String,time:Int) in lrcArray {
@@ -181,7 +181,7 @@ class Common {
                 var prev = lrcArray[i-1]
                 return (prev.lrc,lrc)
             }
-            i++
+            i += 1
         }
         
         return ("","")

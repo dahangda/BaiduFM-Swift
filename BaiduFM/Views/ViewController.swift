@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var likeButton: UIButton!
     
     
-    var timer:NSTimer? = nil
+    var timer:Timer? = nil
     var currentChannel = ""
     var dbSong:Song? = nil
     
@@ -44,18 +44,18 @@ class ViewController: UIViewController {
         self.nameLabel.morphingEffect = .Fall
         
         //背景图片模糊效果
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame.size = CGSize(width: view.frame.width, height: view.frame.height)
         self.bgImageView.addSubview(blurView)
         
         self.currentChannel = DataCenter.shareDataCenter.currentChannel
         
-        if let storeChannel = NSUserDefaults.standardUserDefaults().valueForKey("LAST_PLAY_CHANNEL_ID") as? String{
+        if let storeChannel = UserDefaults.standard.value(forKey: "LAST_PLAY_CHANNEL_ID") as? String{
             self.currentChannel = storeChannel
         }
         
-        if let channelName = NSUserDefaults.standardUserDefaults().valueForKey("LAST_PLAY_CHANNEL_NAME") as? String{
+        if let channelName = UserDefaults.standard.value(forKey: "LAST_PLAY_CHANNEL_NAME") as? String{
             DataCenter.shareDataCenter.currentChannelName = channelName
         }
         
@@ -74,32 +74,32 @@ class ViewController: UIViewController {
             self.loadSongData()
         }
         
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("progresstimer:"), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.progresstimer(_:)), userInfo: nil, repeats: true)
         
         //从后台激活通知
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("appDidBecomeActive"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.appDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         
         //监听歌曲列表点击
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("musicListClick"), name: CHANNEL_MUSIC_LIST_CLICK_NOTIFICATION, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.musicListClick), name: NSNotification.Name(rawValue: CHANNEL_MUSIC_LIST_CLICK_NOTIFICATION), object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("otherMusicListClick:"), name: OTHER_MUSIC_LIST_CLICK_NOTIFICATION, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.otherMusicListClick(_:)), name: NSNotification.Name(rawValue: OTHER_MUSIC_LIST_CLICK_NOTIFICATION), object: nil)
         
     }
     
     deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         println("viewDidAppear")
-        if !self.imgView.isAnimating() && DataCenter.shareDataCenter.curPlayStatus == 1{
+        if !self.imgView.isAnimating && DataCenter.shareDataCenter.curPlayStatus == 1{
             self.imgView.rotation()
         }
     }
     
     func appDidBecomeActive(){
         println("appDidBecomeActive")
-        if !self.imgView.isAnimating() && DataCenter.shareDataCenter.curPlayStatus == 1{
+        if !self.imgView.isAnimating && DataCenter.shareDataCenter.curPlayStatus == 1{
             self.imgView.rotation()
         }
     }
@@ -108,7 +108,7 @@ class ViewController: UIViewController {
         self.start(DataCenter.shareDataCenter.curPlayIndex)
     }
     
-    func otherMusicListClick(notification:NSNotification){
+    func otherMusicListClick(_ notification:Notification){
         
         var info = notification.userInfo as! [String:AnyObject]
         var song = info["song"] as! Song
@@ -117,7 +117,7 @@ class ViewController: UIViewController {
         self.show(song.pic_url, name: song.name, artistName: song.artist, albumName: song.album, songLink: song.song_url, time: song.time, lrcLink: song.lrc_url, songId:song.sid, format:song.format)
     }
     
-    func progresstimer(time:NSTimer){
+    func progresstimer(_ time:Timer){
         
         //println("progresstimer")
         if let link = DataCenter.shareDataCenter.curPlaySongLink {
@@ -162,7 +162,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func start(index:Int){
+    func start(_ index:Int){
         DataCenter.shareDataCenter.curPlayIndex = index
        // println(DataCenter.shareDataCenter.curPlayIndex)
         
@@ -199,7 +199,7 @@ class ViewController: UIViewController {
         self.txtView.text = ""
     }
     
-    func show(showImg:String,name:String,artistName:String,albumName:String,songLink:String,time:Int, lrcLink:String,songId:String,format:String){
+    func show(_ showImg:String,name:String,artistName:String,albumName:String,songLink:String,time:Int, lrcLink:String,songId:String,format:String){
         
         self.resetUI()
         
@@ -207,12 +207,12 @@ class ViewController: UIViewController {
         
         //info
         
-        self.imgView.kf_setImageWithURL(NSURL(string: showImg)!)
+        self.imgView.kf_setImageWithURL(URL(string: showImg)!)
         //self.imgView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: showImg)!)!)
         self.nameLabel.text = name
         self.artistLabel.text = "-" + artistName + "-"
         self.albumLabel.text = albumName
-        self.bgImageView.kf_setImageWithURL(NSURL(string: showImg)!)
+        self.bgImageView.kf_setImageWithURL(URL(string: showImg)!)
         //self.bgImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: showImg)!)!)
         self.imgView.rotation()
         
@@ -227,16 +227,16 @@ class ViewController: UIViewController {
         var musicFile = Common.musicLocalPath(songId, format: format)
         if Common.fileIsExist(musicFile){
             println("播放本地音乐")
-            DataCenter.shareDataCenter.mp.contentURL = NSURL(fileURLWithPath: musicFile)!
+            DataCenter.shareDataCenter.mp.contentURL = URL(fileURLWithPath: musicFile)!
         }else{
-            DataCenter.shareDataCenter.mp.contentURL = NSURL(string: songUrl)
+            DataCenter.shareDataCenter.mp.contentURL = URL(string: songUrl)
         }
         
         DataCenter.shareDataCenter.mp.prepareToPlay()
         DataCenter.shareDataCenter.mp.play()
         DataCenter.shareDataCenter.curPlayStatus = 1
         
-        self.playButton.setImage(UIImage(named: "player_btn_pause_normal"), forState: UIControlState.Normal)
+        self.playButton.setImage(UIImage(named: "player_btn_pause_normal"), for: UIControlState())
         
         self.songTimeLengthLabel?.text = Common.getMinuteDisplay(time)
         //\\[\\d{2}:\\d{2}\\.\\d{2}\\]
@@ -263,15 +263,15 @@ class ViewController: UIViewController {
             self.dbSong = song
             
             if song.is_dl == 1 {
-                self.downloadButton.setImage(UIImage(named: "Downloaded"), forState: UIControlState.Normal)
+                self.downloadButton.setImage(UIImage(named: "Downloaded"), for: UIControlState())
             }else{
-                self.downloadButton.setImage(UIImage(named: "Download"), forState: UIControlState.Normal)
+                self.downloadButton.setImage(UIImage(named: "Download"), for: UIControlState())
             }
             
             if song.is_like == 1 {
-                self.likeButton.setImage(UIImage(named: "Like"), forState: UIControlState.Normal)
+                self.likeButton.setImage(UIImage(named: "Like"), for: UIControlState())
             }else{
-                self.likeButton.setImage(UIImage(named: "Unlike"), forState: UIControlState.Normal)
+                self.likeButton.setImage(UIImage(named: "Unlike"), for: UIControlState())
             }
         }
     }
@@ -293,21 +293,21 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func prevSong(sender: UIButton) {
+    @IBAction func prevSong(_ sender: UIButton) {
         Async.background{
             self.prev()
         }
     }
     
     
-    @IBAction func nextSong(sender: UIButton) {
+    @IBAction func nextSong(_ sender: UIButton) {
         Async.background{
             self.next()
         }
     }
     
     func prev(){
-        DataCenter.shareDataCenter.curPlayIndex--
+        DataCenter.shareDataCenter.curPlayIndex -= 1
         if DataCenter.shareDataCenter.curPlayIndex < 0 {
             DataCenter.shareDataCenter.curPlayIndex = DataCenter.shareDataCenter.curShowAllSongId.count-1
         }
@@ -315,7 +315,7 @@ class ViewController: UIViewController {
     }
     
     func next(){
-        DataCenter.shareDataCenter.curPlayIndex++
+        DataCenter.shareDataCenter.curPlayIndex += 1
         if DataCenter.shareDataCenter.curPlayIndex > DataCenter.shareDataCenter.curShowAllSongId.count{
             DataCenter.shareDataCenter.curPlayIndex = 0
         }
@@ -323,35 +323,35 @@ class ViewController: UIViewController {
     }
     
     //锁屏显示歌曲专辑信息
-    func showNowPlay(songPic:String,name:String,artistName:String,albumName:String){
+    func showNowPlay(_ songPic:String,name:String,artistName:String,albumName:String){
         
         //var showImg = Common.getIndexPageImage(info)        
-        var img = UIImage(data: NSData(contentsOfURL: NSURL(string: songPic)!)!)
-        var item = MPMediaItemArtwork(image: img)
+        let img = UIImage(data: try! Data(contentsOf: URL(string: songPic)!))
+        let item = MPMediaItemArtwork(image: img!)
         
-        var dic:[NSObject : AnyObject] = [:]
+        var dic:[AnyHashable: Any] = [:]
         dic[MPMediaItemPropertyTitle] = name
         dic[MPMediaItemPropertyArtist] = artistName
         dic[MPMediaItemPropertyAlbumTitle] = albumName
         dic[MPMediaItemPropertyArtwork] = item
         
-        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = dic
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = dic as! [String : Any]
     }
     
     //接受锁屏事件
-    override func remoteControlReceivedWithEvent(event: UIEvent) {
+    override func remoteControlReceived(with event: UIEvent?) {
         
-        if event.type == UIEventType.RemoteControl{
-            switch event.subtype {
-                case UIEventSubtype.RemoteControlPlay:
+        if event?.type == UIEventType.remoteControl{
+            switch event?.subtype {
+                case UIEventSubtype.remoteControlPlay:
                     DataCenter.shareDataCenter.mp.play()
-                case UIEventSubtype.RemoteControlPause:
+                case UIEventSubtype.remoteControlPause:
                     DataCenter.shareDataCenter.mp.pause()
-                case UIEventSubtype.RemoteControlTogglePlayPause:
+                case UIEventSubtype.remoteControlTogglePlayPause:
                     self.togglePlayPause()
-                case UIEventSubtype.RemoteControlPreviousTrack:
+                case UIEventSubtype.remoteControlPreviousTrack:
                     self.prev()
-                case UIEventSubtype.RemoteControlNextTrack:
+                case UIEventSubtype.remoteControlNextTrack:
                     self.next()
                 default:break
             }
@@ -367,22 +367,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func changePlayStatus(sender: UIButton) {
+    @IBAction func changePlayStatus(_ sender: UIButton) {
         
         if DataCenter.shareDataCenter.curPlayStatus == 1 {
             DataCenter.shareDataCenter.curPlayStatus = 2
             DataCenter.shareDataCenter.mp.pause()
-            self.playButton.setImage(UIImage(named: "player_btn_play_normal"), forState: UIControlState.Normal)
+            self.playButton.setImage(UIImage(named: "player_btn_play_normal"), for: UIControlState())
             self.imgView.layer.removeAllAnimations()
         }else{
             DataCenter.shareDataCenter.curPlayStatus = 1
             DataCenter.shareDataCenter.mp.play()
-            self.playButton.setImage(UIImage(named: "player_btn_pause_normal"), forState: UIControlState.Normal)
+            self.playButton.setImage(UIImage(named: "player_btn_pause_normal"), for: UIControlState())
             self.imgView.rotation()
         }
     }
     
-    @IBAction func downloadSong(sender: UIButton) {
+    @IBAction func downloadSong(_ sender: UIButton) {
         
         if let dbsong  = self.dbSong {
             
@@ -393,7 +393,7 @@ class ViewController: UIViewController {
                     var ret2 = DataCenter.shareDataCenter.dbSongList.updateDownloadStatus(dbsong.sid, status: 0)
                     
                     self.dbSong!.is_dl = 0
-                    self.downloadButton.setImage(UIImage(named: "Download"), forState: UIControlState.Normal)
+                    self.downloadButton.setImage(UIImage(named: "Download"), for: UIControlState())
                     println("删除下载\(dbsong.sid)\(dbsong.name)")
                 }
             }else{
@@ -427,7 +427,7 @@ class ViewController: UIViewController {
     
     }
     
-    @IBAction func likeSong(sender: UIButton) {
+    @IBAction func likeSong(_ sender: UIButton) {
         
         if let dbsong  = self.dbSong {
             if dbsong.is_like == 1 {
@@ -435,7 +435,7 @@ class ViewController: UIViewController {
                 if DataCenter.shareDataCenter.dbSongList.updateLikeStatus(dbsong.sid, status: 0){
                     println("\(dbsong.sid)\(dbsong.name)取消收藏成功")
                     self.dbSong!.is_like = 0
-                    self.likeButton.setImage(UIImage(named: "Unlike"), forState: UIControlState.Normal)
+                    self.likeButton.setImage(UIImage(named: "Unlike"), for: UIControlState())
                 }else{
                     println("\(dbsong.sid)取消收藏失败")
                 }
@@ -445,7 +445,7 @@ class ViewController: UIViewController {
                 if DataCenter.shareDataCenter.dbSongList.updateLikeStatus(dbsong.sid, status: 1){
                     println("\(dbsong.sid)\(dbsong.name)收藏成功")
                     self.dbSong!.is_like = 1
-                    self.likeButton.setImage(UIImage(named: "Like"), forState: UIControlState.Normal)
+                    self.likeButton.setImage(UIImage(named: "Like"), for: UIControlState())
                 }else{
                     println("\(dbsong.sid)收藏失败")
                 }

@@ -11,16 +11,18 @@ import MediaPlayer
 
 class DataCenter {
     
+    private static var __once: () = { () -> Void in
+            Static.instance = DataCenter()
+        }()
+    
     //单例
     class var shareDataCenter:DataCenter{
         struct Static {
-            static var onceToken : dispatch_once_t = 0
+            static var onceToken : Int = 0
             static var instance: DataCenter? = nil
         }
         
-        dispatch_once(&Static.onceToken) { () -> Void in
-            Static.instance = DataCenter()
-        }
+        _ = DataCenter.__once
         return Static.instance!
     }
     
@@ -32,15 +34,15 @@ class DataCenter {
     //当前分类
     var currentChannel: String = "public_tuijian_zhongguohaoshengyin" {
         didSet{
-            NSUserDefaults.standardUserDefaults().setValue(self.currentChannel, forKey: "LAST_PLAY_CHANNEL_ID")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.setValue(self.currentChannel, forKey: "LAST_PLAY_CHANNEL_ID")
+            UserDefaults.standard.synchronize()
         }
     }
     
     var currentChannelName: String = "中国好声音" {
         didSet{
-            NSUserDefaults.standardUserDefaults().setValue(self.currentChannelName, forKey: "LAST_PLAY_CHANNEL_NAME")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.setValue(self.currentChannelName, forKey: "LAST_PLAY_CHANNEL_NAME")
+            UserDefaults.standard.synchronize()
         }
     }
     

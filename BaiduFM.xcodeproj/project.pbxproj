@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34B44C451EC21E4D00812F64 /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C431EC21D1E00812F64 /* Async.framework */; };
+		34B44C4C1EC238E200812F64 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C461EC238E200812F64 /* Alamofire.framework */; };
+		34B44C4D1EC238E200812F64 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C471EC238E200812F64 /* Kingfisher.framework */; };
+		34B44C4E1EC238E200812F64 /* LTMorphingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C481EC238E200812F64 /* LTMorphingLabel.framework */; };
+		34B44C4F1EC238E200812F64 /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C491EC238E200812F64 /* MJRefresh.framework */; };
+		34B44C501EC238E200812F64 /* Pods_BaiduFM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C4A1EC238E200812F64 /* Pods_BaiduFM.framework */; };
+		34B44C511EC238E200812F64 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C4B1EC238E200812F64 /* SwiftyJSON.framework */; };
+		34B44C521EC2390800812F64 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C461EC238E200812F64 /* Alamofire.framework */; };
+		34B44C531EC2390800812F64 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C471EC238E200812F64 /* Kingfisher.framework */; };
+		34B44C541EC2390800812F64 /* LTMorphingLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C481EC238E200812F64 /* LTMorphingLabel.framework */; };
+		34B44C551EC2390800812F64 /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C491EC238E200812F64 /* MJRefresh.framework */; };
+		34B44C561EC2390800812F64 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C4B1EC238E200812F64 /* SwiftyJSON.framework */; };
+		34B44C581EC2390800812F64 /* Pods_BaiduFM_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B44C571EC2390800812F64 /* Pods_BaiduFM_WatchKit_Extension.framework */; };
+		34B44C5B1EC23C2C00812F64 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B44C5A1EC23C2C00812F64 /* Async.swift */; };
 		672EA3401AEC6E2800E6F9AE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672EA33F1AEC6E2800E6F9AE /* DataManager.swift */; };
 		6749F3851AEC7F5700A892ED /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749F3831AEC7F5700A892ED /* Song.swift */; };
 		6749F3861AEC7F5700A892ED /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749F3841AEC7F5700A892ED /* Channel.swift */; };
@@ -54,8 +68,8 @@
 		67F0AEC61AD9FF8C000CB588 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67F0AEC51AD9FF8C000CB588 /* Images.xcassets */; };
 		67F0AEC91AD9FF8C000CB588 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F0AEC71AD9FF8C000CB588 /* LaunchScreen.xib */; };
 		67F0AEF01ADA6EFE000CB588 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F0AEEF1ADA6EFE000CB588 /* MediaPlayer.framework */; };
-		AA579C433DF3257EB65609A4 /* Pods_BaiduFM_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A74E34AB8CFC526128A964DD /* Pods_BaiduFM_WatchKit_Extension.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		F964CFD7279512DD676A4FEE /* Pods_BaiduFM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DFAF1C2E553F9D6B4D386F3 /* Pods_BaiduFM.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		809DBFBCC79FE87722B57DE8 /* Pods_BaiduFM_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE321418F21F77B03D85EA29 /* Pods_BaiduFM_WatchKit_Extension.framework */; };
+		B1E8FE29A7A29DE2526BEE0B /* Pods_BaiduFM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4766AA53B728A8E21790985D /* Pods_BaiduFM.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,9 +113,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		20E673D2A9FF666BFEC068DC /* Pods-BaiduFM WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiduFM WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaiduFM WatchKit Extension/Pods-BaiduFM WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
-		2EF36FF5131CA2B46F28A86C /* Pods-BaiduFM WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiduFM WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaiduFM WatchKit Extension/Pods-BaiduFM WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
-		3D93CC2857D85D497AE0052A /* Pods-BaiduFM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiduFM.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaiduFM/Pods-BaiduFM.release.xcconfig"; sourceTree = "<group>"; };
+		34B44C431EC21D1E00812F64 /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = "../Library/Developer/Xcode/DerivedData/BaiduFM-fblkxpkkcntsrgfuppqddigzomga/Build/Products/Debug-iphonesimulator/Async/Async.framework"; sourceTree = "<group>"; };
+		34B44C461EC238E200812F64 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../Library/Developer/Xcode/DerivedData/BaiduFM-fblkxpkkcntsrgfuppqddigzomga/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		34B44C471EC238E200812F64 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = "../Library/Developer/Xcode/DerivedData/BaiduFM-fblkxpkkcntsrgfuppqddigzomga/Build/Products/Debug-iphonesimulator/Kingfisher/Kingfisher.framework"; sourceTree = "<group>"; };
+		34B44C481EC238E200812F64 /* LTMorphingLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LTMorphingLabel.framework; path = "../Library/Developer/Xcode/DerivedData/BaiduFM-fblkxpkkcntsrgfuppqddigzomga/Build/Products/Debug-iphonesimulator/LTMorphingLabel/LTMorphingLabel.framework"; sourceTree = "<group>"; };
+		34B44C491EC238E200812F64 /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJRefresh.framework; path = "../Library/Developer/Xcode/DerivedData/BaiduFM-fblkxpkkcntsrgfuppqddigzomga/Build/Products/Debug-iphonesimulator/MJRefresh/MJRefresh.framework"; sourceTree = "<group>"; };
+		34B44C4A1EC238E200812F64 /* Pods_BaiduFM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_BaiduFM.framework; path = "../Library/Developer/Xcode/DerivedData/BaiduFM-fblkxpkkcntsrgfuppqddigzomga/Build/Products/Debug-iphonesimulator/Pods_BaiduFM.framework"; sourceTree = "<group>"; };
+		34B44C4B1EC238E200812F64 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../Library/Developer/Xcode/DerivedData/BaiduFM-fblkxpkkcntsrgfuppqddigzomga/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		34B44C571EC2390800812F64 /* Pods_BaiduFM_WatchKit_Extension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_BaiduFM_WatchKit_Extension.framework; path = "../Library/Developer/Xcode/DerivedData/BaiduFM-fblkxpkkcntsrgfuppqddigzomga/Build/Products/Debug-iphonesimulator/Pods_BaiduFM_WatchKit_Extension.framework"; sourceTree = "<group>"; };
+		34B44C5A1EC23C2C00812F64 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		4766AA53B728A8E21790985D /* Pods_BaiduFM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaiduFM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58CB47EA3E027B59D558D546 /* Pods-BaiduFM WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiduFM WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaiduFM WatchKit Extension/Pods-BaiduFM WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		63691209F29E058225BC203D /* Pods-BaiduFM WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiduFM WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaiduFM WatchKit Extension/Pods-BaiduFM WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		672EA33F1AEC6E2800E6F9AE /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		673DB82C1ADCB614006D904B /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		6749F3831AEC7F5700A892ED /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
@@ -156,9 +179,9 @@
 		67F0AEC51AD9FF8C000CB588 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		67F0AEC81AD9FF8C000CB588 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		67F0AEEF1ADA6EFE000CB588 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		7676E308C864DAF9BA887037 /* Pods-BaiduFM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiduFM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaiduFM/Pods-BaiduFM.debug.xcconfig"; sourceTree = "<group>"; };
-		9DFAF1C2E553F9D6B4D386F3 /* Pods_BaiduFM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaiduFM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A74E34AB8CFC526128A964DD /* Pods_BaiduFM_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaiduFM_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A8492E036E45F7CC9E288CB /* Pods-BaiduFM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiduFM.release.xcconfig"; path = "Pods/Target Support Files/Pods-BaiduFM/Pods-BaiduFM.release.xcconfig"; sourceTree = "<group>"; };
+		9AD42605C14621074361DE1E /* Pods-BaiduFM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaiduFM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BaiduFM/Pods-BaiduFM.debug.xcconfig"; sourceTree = "<group>"; };
+		FE321418F21F77B03D85EA29 /* Pods_BaiduFM_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaiduFM_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +189,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA579C433DF3257EB65609A4 /* Pods_BaiduFM_WatchKit_Extension.framework in Frameworks */,
+				34B44C4C1EC238E200812F64 /* Alamofire.framework in Frameworks */,
+				34B44C4D1EC238E200812F64 /* Kingfisher.framework in Frameworks */,
+				34B44C4E1EC238E200812F64 /* LTMorphingLabel.framework in Frameworks */,
+				34B44C4F1EC238E200812F64 /* MJRefresh.framework in Frameworks */,
+				34B44C501EC238E200812F64 /* Pods_BaiduFM.framework in Frameworks */,
+				34B44C511EC238E200812F64 /* SwiftyJSON.framework in Frameworks */,
+				34B44C451EC21E4D00812F64 /* Async.framework in Frameworks */,
+				809DBFBCC79FE87722B57DE8 /* Pods_BaiduFM_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,16 +204,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B44C581EC2390800812F64 /* Pods_BaiduFM_WatchKit_Extension.framework in Frameworks */,
+				34B44C521EC2390800812F64 /* Alamofire.framework in Frameworks */,
+				34B44C531EC2390800812F64 /* Kingfisher.framework in Frameworks */,
+				34B44C541EC2390800812F64 /* LTMorphingLabel.framework in Frameworks */,
+				34B44C551EC2390800812F64 /* MJRefresh.framework in Frameworks */,
+				34B44C561EC2390800812F64 /* SwiftyJSON.framework in Frameworks */,
 				67B3F1961AE1DA590061068C /* libsqlite3.dylib in Frameworks */,
 				6783E0341AE0D6E400D9D5FC /* AVFoundation.framework in Frameworks */,
 				67F0AEF01ADA6EFE000CB588 /* MediaPlayer.framework in Frameworks */,
-				F964CFD7279512DD676A4FEE /* Pods_BaiduFM.framework in Frameworks */,
+				B1E8FE29A7A29DE2526BEE0B /* Pods_BaiduFM.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA9A81230661311C393AC75C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		61EBB8C0ED1484289CCEBDF7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9AD42605C14621074361DE1E /* Pods-BaiduFM.debug.xcconfig */,
+				7A8492E036E45F7CC9E288CB /* Pods-BaiduFM.release.xcconfig */,
+				63691209F29E058225BC203D /* Pods-BaiduFM WatchKit Extension.debug.xcconfig */,
+				58CB47EA3E027B59D558D546 /* Pods-BaiduFM WatchKit Extension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6749F3871AEC7F6700A892ED /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +278,7 @@
 		6780CEA21AEC66C1000BAA67 /* BaiduFM WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
+				34B44C5A1EC23C2C00812F64 /* Async.swift */,
 				6780CEA51AEC66C1000BAA67 /* Interface.storyboard */,
 				6780CEA81AEC66C1000BAA67 /* Images.xcassets */,
 				6780CEA31AEC66C1000BAA67 /* Supporting Files */,
@@ -298,8 +353,8 @@
 				6780CE901AEC66C1000BAA67 /* BaiduFM WatchKit Extension */,
 				6780CEA21AEC66C1000BAA67 /* BaiduFM WatchKit App */,
 				67F0AEBA1AD9FF8C000CB588 /* Products */,
-				A44732D7A8100059FF6B3791 /* Pods */,
 				D16A7CFBB847F60AA65C6F17 /* Frameworks */,
+				61EBB8C0ED1484289CCEBDF7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -350,23 +405,20 @@
 			name = Library;
 			sourceTree = "<group>";
 		};
-		A44732D7A8100059FF6B3791 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7676E308C864DAF9BA887037 /* Pods-BaiduFM.debug.xcconfig */,
-				3D93CC2857D85D497AE0052A /* Pods-BaiduFM.release.xcconfig */,
-				2EF36FF5131CA2B46F28A86C /* Pods-BaiduFM WatchKit Extension.debug.xcconfig */,
-				20E673D2A9FF666BFEC068DC /* Pods-BaiduFM WatchKit Extension.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		D16A7CFBB847F60AA65C6F17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34B44C571EC2390800812F64 /* Pods_BaiduFM_WatchKit_Extension.framework */,
+				34B44C461EC238E200812F64 /* Alamofire.framework */,
+				34B44C471EC238E200812F64 /* Kingfisher.framework */,
+				34B44C481EC238E200812F64 /* LTMorphingLabel.framework */,
+				34B44C491EC238E200812F64 /* MJRefresh.framework */,
+				34B44C4A1EC238E200812F64 /* Pods_BaiduFM.framework */,
+				34B44C4B1EC238E200812F64 /* SwiftyJSON.framework */,
+				34B44C431EC21D1E00812F64 /* Async.framework */,
 				67B3F1951AE1DA590061068C /* libsqlite3.dylib */,
-				9DFAF1C2E553F9D6B4D386F3 /* Pods_BaiduFM.framework */,
-				A74E34AB8CFC526128A964DD /* Pods_BaiduFM_WatchKit_Extension.framework */,
+				4766AA53B728A8E21790985D /* Pods_BaiduFM.framework */,
+				FE321418F21F77B03D85EA29 /* Pods_BaiduFM_WatchKit_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -378,12 +430,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6780CEB01AEC66C1000BAA67 /* Build configuration list for PBXNativeTarget "BaiduFM WatchKit Extension" */;
 			buildPhases = (
-				D9CE428649E603508E68A61B /* Check Pods Manifest.lock */,
+				FCB56DBE5748F46924E01340 /* [CP] Check Pods Manifest.lock */,
 				6780CE8B1AEC66C1000BAA67 /* Sources */,
 				6780CE8C1AEC66C1000BAA67 /* Frameworks */,
 				6780CE8D1AEC66C1000BAA67 /* Resources */,
-				F9D28263A8963EC0591BB2F3 /* Embed Pods Frameworks */,
-				4D3B7E955B90BF4DA1571D42 /* Copy Pods Resources */,
+				3456DAE8C0B2D43A96DC25A9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -400,6 +451,7 @@
 			buildConfigurationList = 6780CEAD1AEC66C1000BAA67 /* Build configuration list for PBXNativeTarget "BaiduFM WatchKit App" */;
 			buildPhases = (
 				6780CE9C1AEC66C1000BAA67 /* Resources */,
+				BA9A81230661311C393AC75C /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -414,14 +466,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67F0AED81AD9FF8C000CB588 /* Build configuration list for PBXNativeTarget "BaiduFM" */;
 			buildPhases = (
-				93A247EDCB855C33CB200A9C /* Check Pods Manifest.lock */,
+				8B7828C74F0BE98D2B4BEC75 /* [CP] Check Pods Manifest.lock */,
 				67F0AEB51AD9FF8C000CB588 /* Sources */,
 				67F0AEB61AD9FF8C000CB588 /* Frameworks */,
 				67F0AEB71AD9FF8C000CB588 /* Resources */,
 				67F0AEE81ADA2751000CB588 /* CopyFiles */,
-				45F669CBB9ED63A21DDB4B6D /* Embed Pods Frameworks */,
-				D5D730DE5EB9306609B4F7D4 /* Copy Pods Resources */,
 				67806C961AEA8C70002D94D1 /* Embed App Extensions */,
+				905FD6136B78458587DB936E /* [CP] Embed Pods Frameworks */,
+				69056DB3D1589AB8F51A7764 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -444,12 +496,14 @@
 				TargetAttributes = {
 					6780CE8E1AEC66C1000BAA67 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0830;
 					};
 					6780CE9D1AEC66C1000BAA67 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
 					67F0AEB81AD9FF8C000CB588 = {
 						CreatedOnToolsVersion = 6.3;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -505,29 +559,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		45F669CBB9ED63A21DDB4B6D /* Embed Pods Frameworks */ = {
+		3456DAE8C0B2D43A96DC25A9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaiduFM/Pods-BaiduFM-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4D3B7E955B90BF4DA1571D42 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,29 +574,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaiduFM WatchKit Extension/Pods-BaiduFM WatchKit Extension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		93A247EDCB855C33CB200A9C /* Check Pods Manifest.lock */ = {
+		69056DB3D1589AB8F51A7764 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D5D730DE5EB9306609B4F7D4 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -565,34 +589,49 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaiduFM/Pods-BaiduFM-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D9CE428649E603508E68A61B /* Check Pods Manifest.lock */ = {
+		8B7828C74F0BE98D2B4BEC75 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		F9D28263A8963EC0591BB2F3 /* Embed Pods Frameworks */ = {
+		905FD6136B78458587DB936E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaiduFM WatchKit Extension/Pods-BaiduFM WatchKit Extension-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BaiduFM/Pods-BaiduFM-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCB56DBE5748F46924E01340 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -637,6 +676,7 @@
 				6749F38E1AEC7F6700A892ED /* Const.swift in Sources */,
 				67B9C34E1AEBF63100107696 /* MusicListTableViewController.swift in Sources */,
 				67B3F1901AE1DA3F0061068C /* FMDatabase.m in Sources */,
+				34B44C5B1EC23C2C00812F64 /* Async.swift in Sources */,
 				67B9C3451AEBF63100107696 /* ChannelTableViewController.swift in Sources */,
 				67B3F1911AE1DA3F0061068C /* FMDatabaseAdditions.m in Sources */,
 				67B9C3541AEBF63100107696 /* RoundImageView.swift in Sources */,
@@ -725,7 +765,7 @@
 		};
 		6780CEB11AEC66C1000BAA67 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2EF36FF5131CA2B46F28A86C /* Pods-BaiduFM WatchKit Extension.debug.xcconfig */;
+			baseConfigurationReference = 63691209F29E058225BC203D /* Pods-BaiduFM WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -736,18 +776,20 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		6780CEB21AEC66C1000BAA67 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20E673D2A9FF666BFEC068DC /* Pods-BaiduFM WatchKit Extension.release.xcconfig */;
+			baseConfigurationReference = 58CB47EA3E027B59D558D546 /* Pods-BaiduFM WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "BaiduFM WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -836,7 +878,7 @@
 		};
 		67F0AED91AD9FF8C000CB588 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7676E308C864DAF9BA887037 /* Pods-BaiduFM.debug.xcconfig */;
+			baseConfigurationReference = 9AD42605C14621074361DE1E /* Pods-BaiduFM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -852,12 +894,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BaiduFM/BaiduFM-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		67F0AEDA1AD9FF8C000CB588 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D93CC2857D85D497AE0052A /* Pods-BaiduFM.release.xcconfig */;
+			baseConfigurationReference = 7A8492E036E45F7CC9E288CB /* Pods-BaiduFM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -872,6 +915,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BaiduFM/BaiduFM-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

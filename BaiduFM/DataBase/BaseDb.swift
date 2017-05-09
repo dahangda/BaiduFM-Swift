@@ -18,8 +18,8 @@ class BaseDb {
         println("basedb init")
         var dbDirectory = Utils.documentPath().stringByAppendingPathComponent("database")
         
-        if !NSFileManager.defaultManager().fileExistsAtPath(dbDirectory){
-                NSFileManager.defaultManager().createDirectoryAtPath(dbDirectory, withIntermediateDirectories: false, attributes: nil, error: nil)
+        if !FileManager.default.fileExists(atPath: dbDirectory){
+                FileManager.default.createDirectoryAtPath(dbDirectory, withIntermediateDirectories: false, attributes: nil, error: nil)
         }
         
         self.dbPath = dbDirectory.stringByAppendingPathComponent("baidufm.sqlite")
@@ -28,10 +28,10 @@ class BaseDb {
         //println(dbPath)
         
         //db文件不存在则创建
-        if !NSFileManager.defaultManager().fileExistsAtPath(self.dbPath){
+        if !FileManager.default.fileExists(atPath: self.dbPath){
             if self.open() {
                 var sql = "CREATE TABLE tbl_song_list (id INTEGER PRIMARY KEY AUTOINCREMENT,sid TEXT UNIQUE,name TEXT,artist TEXT,album TEXT,song_url  TEXT,pic_url   TEXT,lrc_url TEXT,time INTEGER,is_dl INTEGER DEFAULT 0,dl_file TEXT,is_like INTEGER DEFAULT 0,is_recent INTEGER DEFAULT 1,format TEXT)"
-                if !self.db.executeUpdate(sql, withArgumentsInArray: nil){
+                if !self.db.executeUpdate(sql, withArgumentsIn: nil){
                     println("db创建失败")
                 }else{
                     println("db创建成功")

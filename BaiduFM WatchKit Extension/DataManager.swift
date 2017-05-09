@@ -11,16 +11,18 @@ import MediaPlayer
 
 class DataManager {
     
+    private static var __once: () = { () -> Void in
+            Static.instance = DataManager()
+        }()
+    
     //单例
     class var shareDataManager:DataManager{
         struct Static {
-            static var onceToken : dispatch_once_t = 0
+            static var onceToken : Int = 0
             static var instance: DataManager? = nil
         }
         
-        dispatch_once(&Static.onceToken) { () -> Void in
-            Static.instance = DataManager()
-        }
+        _ = DataManager.__once
         return Static.instance!
     }
     
@@ -29,8 +31,8 @@ class DataManager {
     
     var chid = "public_tuijian_rege"{
         didSet{
-            NSUserDefaults.standardUserDefaults().setValue(self.chid, forKey: "LAST_PLAY_CHANNEL_ID")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.setValue(self.chid, forKey: "LAST_PLAY_CHANNEL_ID")
+            UserDefaults.standard.synchronize()
         }
     }
     var chList:[Channel] = []  //类型列表
@@ -57,7 +59,7 @@ class DataManager {
     var curLrcInfo:[(lrc:String,time:Int)] = []
     
     //当前分类最新20首歌曲
-    class func getTop20SongInfoList(finish:()->Void){
+    class func getTop20SongInfoList(_ finish:@escaping ()->Void){
         HttpRequest.getSongList(DataManager.shareDataManager.chid, callback: {(list:[String]?) -> Void in
             if let songIdList = list {
                 DataManager.shareDataManager.allSongIdList = songIdList

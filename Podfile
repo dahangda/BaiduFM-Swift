@@ -4,16 +4,18 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'BaiduFM' do
-pod 'Alamofire', '~> 1.2'
-pod "SwiftyJSON", '>= 2.2'
-pod 'Async', :git => 'https://github.com/duemunk/Async.git'
+pod 'Alamofire', '~> 4.0'
+pod "SwiftyJSON", '>= 3.0'
+use_frameworks!
+pod "AsyncSwift", :git => 'https://github.com/duemunk/Async.git'
 pod 'MJRefresh'
-pod 'LTMorphingLabel', '~> 0.0.6'
-pod 'Kingfisher', '~> 1.2'
+pod 'LTMorphingLabel', '~> 0.5.0'
+pod 'Kingfisher', '~> 3.7'
 end
 
 target 'BaiduFM WatchKit Extension' do
-pod 'Alamofire', '~> 1.2'
-pod "SwiftyJSON", '>= 2.2'
-pod 'Async', :git => 'https://github.com/duemunk/Async.git'
+pod 'Alamofire', '~> 4.0'
+pod "SwiftyJSON", '>= 3.0'
+use_frameworks!
+pod "AsyncSwift", :git => 'https://github.com/duemunk/Async.git'
 end

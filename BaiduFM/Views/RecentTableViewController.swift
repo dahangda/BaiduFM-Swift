@@ -22,7 +22,7 @@ class RecentTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.loadData()
     }
 
@@ -33,29 +33,29 @@ class RecentTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return self.list!.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) 
 
         // Configure the cell...
-        var song = self.list![indexPath.row]
+        let song = self.list![indexPath.row]
         
         cell.textLabel?.text = song.name
         cell.detailTextLabel?.text = song.artist
         
-        if let url = NSURL(string:song.pic_url) {
-            if let data = NSData(contentsOfURL: url){
+        if let url = URL(string:song.pic_url) {
+            if let data = try? Data(contentsOf: url){
                 cell.imageView?.image = UIImage(data: data)
             }
         }
@@ -63,27 +63,27 @@ class RecentTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        var song = self.list![indexPath.row]
-        var data:Dictionary<String,AnyObject> = ["song":song]
-        NSNotificationCenter.defaultCenter().postNotificationName(OTHER_MUSIC_LIST_CLICK_NOTIFICATION, object: nil, userInfo: data)
+        let song = self.list![indexPath.row]
+        let data:Dictionary<String,AnyObject> = ["song":song]
+        NotificationCenter.default.post(name: Notification.Name(rawValue: OTHER_MUSIC_LIST_CLICK_NOTIFICATION), object: nil, userInfo: data)
         
         //导航控制器 跳转到root播放页面
         self.tabBarController?.selectedIndex = 0
-        var mainView = self.tabBarController?.viewControllers![0] as! UINavigationController
-        mainView.popToRootViewControllerAnimated(true)
+        let mainView = self.tabBarController?.viewControllers![0] as! UINavigationController
+        mainView.popToRootViewController(animated: true)
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
-        UIView.animateWithDuration(0.25, animations: { () -> Void in
+        UIView.animate(withDuration: 0.25, animations: { () -> Void in
             cell.layer.transform = CATransform3DMakeScale(1, 1, 1)
         })
     }
 
     
-    @IBAction func deleteAllSong(sender: UIBarButtonItem) {
+    @IBAction func deleteAllSong(_ sender: UIBarButtonItem) {
         
         DataCenter.shareDataCenter.dbSongList.cleanRecentList()
         self.loadData()

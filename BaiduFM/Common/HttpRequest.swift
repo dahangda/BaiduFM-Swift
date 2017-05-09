@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class HttpRequest {
     
-    class func getChannelList(callback:[Channel]?->Void) -> Void{
+    class func getChannelList(_ callback:@escaping ([Channel]?)->Void) -> Void{
         
         var channelList:[Channel]? = nil
         
@@ -42,7 +42,7 @@ class HttpRequest {
         }
     }
     
-    class func getSongList(ch_name:String, callback:[String]?->Void)->Void{
+    class func getSongList(_ ch_name:String, callback:@escaping ([String]?)->Void)->Void{
         
         var songList:[String]? = nil
         var url = http_song_list_url + ch_name
@@ -64,7 +64,7 @@ class HttpRequest {
         }
     }
     
-    class func getSongInfoList(chidArray:[String], callback:[SongInfo]?->Void ){
+    class func getSongInfoList(_ chidArray:[String], callback:@escaping ([SongInfo]?)->Void ){
         
         var chids = join(",", chidArray)
         
@@ -101,7 +101,7 @@ class HttpRequest {
         }
     }
     
-    class func getSongLinkList(chidArray:[String], callback:[SongLink]?->Void ) {
+    class func getSongLinkList(_ chidArray:[String], callback:@escaping ([SongLink]?)->Void ) {
     
         var chids = join(",", chidArray)
         
@@ -149,7 +149,7 @@ class HttpRequest {
         }
     }
     
-    class func getSongLink(songid:String, callback:SongLink?->Void ) {
+    class func getSongLink(_ songid:String, callback:@escaping (SongLink?)->Void ) {
     
         let params = ["songIds":songid]
         
@@ -199,10 +199,10 @@ class HttpRequest {
         }
     }
     
-    class func getLrc(lrcUrl:String, callback:String?->Void) ->Void{
+    class func getLrc(_ lrcUrl:String, callback:@escaping (String?)->Void) ->Void{
         
         let url = http_song_lrc + lrcUrl
-        Alamofire.request(.GET, url).responseString(encoding: NSUTF8StringEncoding){ (_, _, string, error) -> Void in
+        Alamofire.request(.GET, url).responseString(encoding: String.Encoding.utf8){ (_, _, string, error) -> Void in
             
             if error == nil {
                 callback(string)
@@ -212,7 +212,7 @@ class HttpRequest {
         }
     }
     
-    class func downloadFile(songURL:String, musicPath:String, filePath:()->Void){
+    class func downloadFile(_ songURL:String, musicPath:String, filePath:@escaping ()->Void){
         
         var canPlaySongURL = Common.getCanPlaySongUrl(songURL)
         

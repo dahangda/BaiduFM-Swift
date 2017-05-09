@@ -24,12 +24,12 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var lrcLabel: WKInterfaceLabel!
     
     @IBOutlet weak var nextLrcLabel: WKInterfaceLabel!
-    var timer:NSTimer? = nil
+    var timer:Timer? = nil
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         
-        if let chid = NSUserDefaults.standardUserDefaults().stringForKey("LAST_PLAY_CHANNEL_ID"){
+        if let chid = UserDefaults.standard.string(forKey: "LAST_PLAY_CHANNEL_ID"){
             DataManager.shareDataManager.chid = chid
         }
     
@@ -45,12 +45,12 @@ class InterfaceController: WKInterfaceController {
             }
         }
         
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("progresstimer:"), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(InterfaceController.progresstimer(_:)), userInfo: nil, repeats: true)
         
         // Configure interface objects here.
     }
     
-    func playSong(info:SongInfo){
+    func playSong(_ info:SongInfo){
         
         self.curPlaySongId = info.id
         
@@ -91,7 +91,7 @@ class InterfaceController: WKInterfaceController {
                 //播放歌曲
                 DataManager.shareDataManager.mp.stop()
                 var songUrl = Common.getCanPlaySongUrl(songLink.songLink)
-                DataManager.shareDataManager.mp.contentURL = NSURL(string: songUrl)
+                DataManager.shareDataManager.mp.contentURL = URL(string: songUrl)
                 DataManager.shareDataManager.mp.prepareToPlay()
                 DataManager.shareDataManager.mp.play()
                 DataManager.shareDataManager.curPlayStatus = 1
@@ -137,7 +137,7 @@ class InterfaceController: WKInterfaceController {
     
     func prev(){
         
-        DataManager.shareDataManager.curIndex--
+        DataManager.shareDataManager.curIndex -= 1
         if let song = DataManager.shareDataManager.curSongInfo{
             self.playSong(song)
         }
@@ -145,7 +145,7 @@ class InterfaceController: WKInterfaceController {
     
     func next(){
         
-        DataManager.shareDataManager.curIndex++
+        DataManager.shareDataManager.curIndex += 1
         if let song = DataManager.shareDataManager.curSongInfo{
             self.playSong(song)
         }
@@ -153,11 +153,11 @@ class InterfaceController: WKInterfaceController {
     
     @IBAction func songListAction() {
         
-        self.pushControllerWithName("SongListInterfaceController", context: nil)
+        self.pushController(withName: "SongListInterfaceController", context: nil)
     }
     
     @IBAction func channelListAction() {
-        self.pushControllerWithName("ChannelListInterfaceController", context: nil)
+        self.pushController(withName: "ChannelListInterfaceController", context: nil)
     }
     
     func loadMoreData(){
@@ -192,7 +192,7 @@ class InterfaceController: WKInterfaceController {
 
     }
     
-    func progresstimer(time:NSTimer){
+    func progresstimer(_ time:Timer){
     
         if let link = DataManager.shareDataManager.curSongLink {
             var currentPlaybackTime = DataManager.shareDataManager.mp.currentPlaybackTime

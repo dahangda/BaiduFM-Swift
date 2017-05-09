@@ -31,20 +31,20 @@ class ChannelTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return DataCenter.shareDataCenter.channelListInfo.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) 
 
         // Configure the cell...
         cell.textLabel?.text = DataCenter.shareDataCenter.channelListInfo[indexPath.row].name
@@ -52,18 +52,18 @@ class ChannelTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
-        var channel = DataCenter.shareDataCenter.channelListInfo[indexPath.row]
+        let channel = DataCenter.shareDataCenter.channelListInfo[indexPath.row]
         DataCenter.shareDataCenter.currentChannel = channel.id
         DataCenter.shareDataCenter.currentChannelName = channel.name
         DataCenter.shareDataCenter.curShowStartIndex = 0
         DataCenter.shareDataCenter.curShowEndIndex = 20
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
-        UIView.animateWithDuration(0.25, animations: { () -> Void in
+        UIView.animate(withDuration: 0.25, animations: { () -> Void in
             cell.layer.transform = CATransform3DMakeScale(1, 1, 1)
         })
     }

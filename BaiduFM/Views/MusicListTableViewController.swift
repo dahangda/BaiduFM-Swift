@@ -26,9 +26,9 @@ class MusicListTableViewController: UITableViewController {
         })
         
         //下拉刷新
-        self.tableView.addLegendHeaderWithRefreshingTarget(self, refreshingAction: Selector("refreshList"))
+        self.tableView.addLegendHeader(withRefreshingTarget: self, refreshingAction: #selector(MusicListTableViewController.refreshList))
         
-        self.tableView.addLegendFooterWithRefreshingTarget(self, refreshingAction: Selector("loadMore"))
+        self.tableView.addLegendFooter(withRefreshingTarget: self, refreshingAction: #selector(MusicListTableViewController.loadMore))
     }
     
     func loadSongData(){
@@ -83,44 +83,44 @@ class MusicListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return self.curChannelList.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) 
         
-        var info =  DataCenter.shareDataCenter.curShowAllSongInfo[indexPath.row]
+        let info =  DataCenter.shareDataCenter.curShowAllSongInfo[indexPath.row]
         
         cell.textLabel?.text = info.name
         //cell.imageView?.kf_setImageWithURL(NSURL(string: info.songPicRadio)!, placeholderImage: nil)
-        cell.imageView?.image = UIImage(data: NSData(contentsOfURL: NSURL(string: info.songPicRadio)!)!)
+        cell.imageView?.image = UIImage(data: try! Data(contentsOf: URL(string: info.songPicRadio)!))
         cell.detailTextLabel?.text = info.artistName
         // Configure the cell...
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
         DataCenter.shareDataCenter.curPlayIndex = indexPath.row
         
-        NSNotificationCenter.defaultCenter().postNotificationName(CHANNEL_MUSIC_LIST_CLICK_NOTIFICATION, object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: CHANNEL_MUSIC_LIST_CLICK_NOTIFICATION), object: nil)
         
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
-        UIView.animateWithDuration(0.25, animations: { () -> Void in
+        UIView.animate(withDuration: 0.25, animations: { () -> Void in
             cell.layer.transform = CATransform3DMakeScale(1, 1, 1)
         })
     }

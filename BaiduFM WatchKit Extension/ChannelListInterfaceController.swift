@@ -14,8 +14,8 @@ class ChannelListInterfaceController: WKInterfaceController {
     
     @IBOutlet weak var table: WKInterfaceTable!
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         
         if DataManager.shareDataManager.chList.count == 0 {
             HttpRequest.getChannelList({(list:[Channel]?) -> Void in
@@ -36,18 +36,18 @@ class ChannelListInterfaceController: WKInterfaceController {
         self.table.setNumberOfRows(DataManager.shareDataManager.chList.count, withRowType: "tableRow")
         
         for i:Int in 0..<self.table.numberOfRows {
-            let row:ChannelTableRow = self.table.rowControllerAtIndex(i) as! ChannelTableRow
+            let row:ChannelTableRow = self.table.rowController(at: i) as! ChannelTableRow
             row.nameLabel.setText(DataManager.shareDataManager.chList[i].name)
         }
     }
     
-    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         
         var ch = DataManager.shareDataManager.chList[rowIndex]
         println("\(ch.id),\(ch.name)")
         DataManager.shareDataManager.chid = ch.id
         
-        self.pushControllerWithName("SongListInterfaceController", context: self)
+        self.pushController(withName: "SongListInterfaceController", context: self)
     }
 
     override func willActivate() {
